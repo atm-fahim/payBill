@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web:
+    container_name: padma-lms
+    image: roy95/php8.2-oracle-apache:latest
+    ports:
+      - 89:80
+    volumes:
+      - "./:/var/www/html"

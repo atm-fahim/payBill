@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    container_name: padma-lms
+    image: roy95/pbl-img-ss:latest
+    networks:
+      padma-mac-test:
+        ipv4_address: 172.31.30.55
+    hostname: padma-lms
+    extra_hosts:
+      - "lms.padmabankbd.com:172.31.30.55"
+      - "www.lms.padmabankbd.com:172.31.30.55"
+    volumes:
+      - "./:/var/www/html"
+      - "./ssl-certificate/:/etc/apache2/ssl/"
+
+networks:
+    padma-ipvlan-MZ:
+        external: true
+        name: padma-ipvlan-MZ
+
