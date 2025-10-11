@@ -38,9 +38,15 @@ class EloquentBaseRepository implements EloquentRepositoryInterface
     {
         return $this->model->select('*')->where('status', '<>', 9)->orderBy('id', 'DESC')->get();
     }
+
     public function withoutDeletingDataByLimit($limit): Collection
     {
         return $this->model->select('*')->where('status', '<>', 9)->orderBy('id', 'DESC')->take($limit)->get();
+    }
+
+    public function infoByOrgIdBranchId($orgId,): Collection
+    {
+        return $this->model->select('*')->where('status', '<>', 9)->orderBy('id', 'DESC')->get();
     }
 
     public function create(array $payload): ?Model

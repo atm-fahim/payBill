@@ -22,7 +22,7 @@ class FrontendRepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CategoryRepo::class, CategoryRepoImpl::class);
         $this->app->bind(EloquentRepositoryInterface::class, EloquentBaseRepository::class);
-        $this->app->bind(StudentUserRepo::class, StudentUserRepoImpl::class);
+//        $this->app->bind(StudentUserRepo::class, StudentUserRepoImpl::class);
     }
 
     /**

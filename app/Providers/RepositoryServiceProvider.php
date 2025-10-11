@@ -14,6 +14,7 @@ use App\Interfaces\Repo\Backend\CategoryRepo;
 use App\Interfaces\Repo\Backend\ClientRepo;
 use App\Interfaces\Repo\Backend\ContactUsRepo;
 use App\Interfaces\Repo\Backend\CourseRepo;
+use App\Interfaces\Repo\Backend\CustomerRepo;
 use App\Interfaces\Repo\Backend\DashBoardLogRepo;
 use App\Interfaces\Repo\Backend\DesignationRepo;
 use App\Interfaces\Repo\Backend\FaqRepo;
@@ -28,6 +29,7 @@ use App\Interfaces\Repo\Backend\OurProductRepo;
 use App\Interfaces\Repo\Backend\PaymentMethodRepo;
 use App\Interfaces\Repo\Backend\ServiceRepo;
 use App\Interfaces\Repo\Backend\SliderRepo;
+use App\Interfaces\Repo\Backend\SupplierRepo;
 use App\Interfaces\Repo\Backend\TeamRepo;
 use App\Interfaces\Repo\Backend\UniversityRepo;
 use App\Interfaces\Repo\Backend\UpcomingRepo;
@@ -45,6 +47,7 @@ use App\Repository\Backend\CategoryRepoImpl;
 use App\Repository\Backend\ClientRepoImpl;
 use App\Repository\Backend\ContactUsRepoImpl;
 use App\Repository\Backend\CourseRepoImpl;
+use App\Repository\Backend\CustomerRepoImpl;
 use App\Repository\Backend\DashBoardLogRepoImpl;
 use App\Repository\Backend\DesignationRepoImpl;
 use App\Repository\Backend\FaqRepoImpl;
@@ -59,6 +62,7 @@ use App\Repository\Backend\OurProductRepoImpl;
 use App\Repository\Backend\PaymentMethodRepoImpl;
 use App\Repository\Backend\ServiceRepoImpl;
 use App\Repository\Backend\SliderRepoImpl;
+use App\Repository\Backend\SupplierRepoImpl;
 use App\Repository\Backend\TeamRepoImpl;
 use App\Repository\Backend\UniversityRepoImpl;
 use App\Repository\Backend\UpcomingRepoImpl;
@@ -76,36 +80,21 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(AboutUsRepo::class, AboutUsRepoImpl::class);
-        $this->app->bind(AlbumRepo::class, AlbumRepoImpl::class);
         $this->app->bind(BranchRepo::class, BranchRepoImpl::class);
         $this->app->bind(BatchRepo::class, BatchRepoImpl::class);
         $this->app->bind(BackendMenuRepo::class, BackendMenuRepoImpl::class);
         $this->app->bind(ContactUsRepo::class, ContactUsRepoImpl::class);
+        $this->app->bind(CustomerRepo::class, CustomerRepoImpl::class);
         $this->app->bind(CategoryRepo::class, CategoryRepoImpl::class);
-        $this->app->bind(CourseRepo::class, CourseRepoImpl::class);
-        $this->app->bind(ClientRepo::class, ClientRepoImpl::class);
-        $this->app->bind(OurCompanyRepo::class, OurCompanyRepoImpl::class);
-        $this->app->bind(DesignationRepo::class, DesignationRepoImpl::class);
-        $this->app->bind(DashBoardLogRepo::class, DashBoardLogRepoImpl::class);
-        $this->app->bind(ImageRepo::class, ImageRepoImpl::class);
-        $this->app->bind(FaqRepo::class, FaqRepoImpl::class);
         $this->app->bind(EloquentRepositoryInterface::class, EloquentBaseRepository::class);
         $this->app->bind(LogoRepo::class, LogoRepoImpl::class);
         $this->app->bind(MenuPermissionRepo::class, MenuPermissionRepoImpl::class);
         $this->app->bind(NoticeRepo::class, NoticeRepoImpl::class);
         $this->app->bind(OrganizationRepo::class, OrganizationRepoImpl::class);
-        $this->app->bind(OurClientRepo::class, OurClientRepoImpl::class);
-        $this->app->bind(OurProductRepo::class, OurProductRepoImpl::class);
         $this->app->bind(PaymentMethodRepo::class, PaymentMethodRepoImpl::class);
-        $this->app->bind(SliderRepo::class, SliderRepoImpl::class);
-        $this->app->bind(ServiceRepo::class, ServiceRepoImpl::class);
-        $this->app->bind(YourDestinationRepo::class, YourDestinationRepoImpl::class);
-        $this->app->bind(TeamRepo::class, TeamRepoImpl::class);
-        $this->app->bind(UpcomingRepo::class, UpcomingRepoImpl::class);
+        $this->app->bind(SupplierRepo::class, SupplierRepoImpl::class);
         $this->app->bind(UserAccessTypeRepo::class, UserAccessTypeRepoImpl::class);
         $this->app->bind(UserRepo::class, UserRepoImpl::class);
-        $this->app->bind(UniversityRepo::class, UniversityRepoImpl::class);
     }
 
     /**

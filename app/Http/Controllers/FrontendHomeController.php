@@ -13,6 +13,7 @@ use App\Interfaces\Repo\Backend\OurProductRepo;
 use App\Interfaces\Repo\Backend\ServiceRepo;
 use App\Interfaces\Repo\Backend\SliderRepo;
 use App\Interfaces\Repo\Backend\UpcomingRepo;
+use App\Interfaces\Repo\Backend\YourDestinationRepo;
 use App\Repository\Backend\ContactUsRepoImpl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,11 +30,9 @@ class FrontendHomeController extends Controller
     private $abtRepo;
     private $prRepo;
     private $clntRepo;
+    private $desRepo;
 
     public function __construct(
-//        ContactUsRepoImpl $cntRepo,
-//        DashBoardLogRepo $dblRepo,
-//        ClientRepo $clntRepo,
         SliderRepo $sldRepo,
         NoticeRepo $noticeRepo,
         ServiceRepo $svcRepo,

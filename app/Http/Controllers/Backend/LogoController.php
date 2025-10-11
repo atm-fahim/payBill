@@ -38,7 +38,7 @@ class LogoController extends BaseController
         $userAccessData = $this->userAccessFunction();
         $logoData        = $this->logoRepo->withoutDeletingData();
         return view('backend.logo.logo')->with('logo_info', $logoData)
-                                                     ->with('user_access',$userAccessData);
+            ->with('user_access',$userAccessData);
     }
 
     public function saveUpdate(Request $request)
@@ -61,6 +61,9 @@ class LogoController extends BaseController
             $image = $request->file('logo_image');
             $favicon = $request->file('favicon');
             $small_logo = $request->file('small_logo');
+            $dashboard_user = $request->file('dashboard_user');
+            $dashboard_logo = $request->file('dashboard_logo');
+            $dashboard_favicon = $request->file('dashboard_favicon');
 
             $uploadPath = public_path('uploads/logo/');
             $readPath = 'uploads/logo';
@@ -82,6 +85,23 @@ class LogoController extends BaseController
                 $data['small_logo'] = $request->input('small_logo1');
             }
 
+            if ($dashboard_user) {
+                $data['dashboard_user'] = $this->logoImage($uploadPath, $dashboard_user, $readPath);
+            } else {
+                $data['dashboard_user'] = $request->input('dashboard_user1');
+            }
+
+            if ($dashboard_logo) {
+                $data['dashboard_logo'] = $this->logoImage($uploadPath, $dashboard_logo, $readPath);
+            } else {
+                $data['dashboard_logo'] = $request->input('dashboard_logo1');
+            }
+
+            if ($dashboard_favicon) {
+                $data['dashboard_favicon'] = $this->logoImage($uploadPath, $dashboard_favicon, $readPath);
+            } else {
+                $data['dashboard_favicon'] = $request->input('dashboard_favicon1');
+            }
 
             (!empty($id)) ? $this->logoRepo->update($id, $data) : $this->logoRepo->save($data);
 
@@ -102,8 +122,8 @@ class LogoController extends BaseController
 
     public function edit($id)
     {
-      $catData=$this->logoRepo->findById($id);
-      echo json_encode($catData);
+        $catData=$this->logoRepo->findById($id);
+        echo json_encode($catData);
     }
 
     public function active($id)

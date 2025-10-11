@@ -4,6 +4,7 @@
 $orgCtn = DB::select("SELECT t1.* FROM contact_us t1 WHERE t1.status=1 and t1.branch_id=0 || t1.branch_id=null");
 
 $logo = DB::select("SELECT t1.logo_image,t1.small_logo,t1.favicon FROM logo t1 WHERE t1.status=1");//                        dd($logo[0]->logo_image);
+$destination = DB::select("SELECT t1.destination_name,t1.slug,t1.id FROM your_destination t1 WHERE t1.status=1");//                        dd($logo[0]->logo_image);
 
 //                        $firstLogo = $logo[0]->logo_image ?? null; // Use null-safe access
 //exit;
@@ -116,13 +117,18 @@ $logo = DB::select("SELECT t1.logo_image,t1.small_logo,t1.favicon FROM logo t1 W
                                             <li><a href="{{route('frontend.about-us')}}">About Us</a></li>
                                             <li><a href="{{route('frontend.mission-vision')}}">Our Mission & Vision</a></li>
                                             <li><a href="{{route('frontend.chairman-profile')}}">Chairman  Profile</a></li>
-                                            <li><a href="{{route('frontend.company')}}">Companies</a></li>
                                             <li><a href="{{route('frontend.branch')}}">Branch</a></li>
 
                                         </ul>
                                     </li>
+                                    <li class="dropdown"><a href="#">Destination</a>
+                                        <ul>
+                                            @foreach($destination as $v_destination)
+                                            <li><a href="{{route('frontend.destination',$v_destination->slug)}}">{{$v_destination->destination_name}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
                                     <li><a href="{{route('frontend.all-services')}}">Services</a></li>
-                                    <li><a href="{{route('frontend.all-product')}}">Our Product</a></li>
                                     <li><a href="{{route('frontend.all-notice-event')}}">News & Event</a></li>
                                     <li><a href="{{route('frontend.album')}}">Gallery</a></li>
                                     <li><a href="{{route('frontend.contact-us')}}">Contact us</a></li>
@@ -162,12 +168,17 @@ $logo = DB::select("SELECT t1.logo_image,t1.small_logo,t1.favicon FROM logo t1 W
                                         <li><a href="{{route('frontend.about-us')}}">About Us</a></li>
                                         <li><a href="{{route('frontend.mission-vision')}}">Our Mission & Vision</a></li>
                                         <li><a href="{{route('frontend.chairman-profile')}}">Chairman  Profile</a></li>
-                                        <li><a href="{{route('frontend.company')}}">Companies</a></li>
                                         <li><a href="{{route('frontend.branch')}}">Branch</a></li>
                                     </ul>
                                 </li>
+                                <li class="dropdown"><a href="#">Destination</a>
+                                    <ul>
+                                        @foreach($destination as $v_destination)
+                                            <li><a href="{{route('frontend.destination',$v_destination->slug)}}">{{$v_destination->destination_name}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                                 <li><a href="{{route('frontend.all-services')}}">Services</a></li>
-                                <li><a href="{{route('frontend.all-product')}}">Our Product</a></li>
                                 <li><a href="{{route('frontend.all-notice-event')}}">News & Event</a></li>
                                 <li><a href="{{route('frontend.album')}}">Gallery</a></li>
 
