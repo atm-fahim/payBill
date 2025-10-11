@@ -55,11 +55,11 @@ class CustomerController extends BaseController
             $code                           = $request->input('code');
             $data['org_id']                 = auth()->user()->org_id;
             $data['branch_id']              = auth()->user()->branch_id;
-            $data['customer_name']   = $request->input('customer_name');
+            $data['customer_name']          = $request->input('customer_name');
             $data['address']                = $request->input('address');
             $data['phone_number']           = $request->input('phone_number');
             $data['password']               = Hash::make('123456789');
-            $data['slug']                   = Str::slug($data['customer_member_name']);
+            $data['slug']                   = Str::slug($data['customer_name']);
             $data['code']                   = (!empty($code))?$code:$this->generateRandomString($data['customer_name']);
             (!empty($id)) ? $this->cusRepo->update($id, $data) : $this->cusRepo->save($data);
             return Redirect::to('customer');
