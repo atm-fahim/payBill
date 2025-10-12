@@ -89,12 +89,12 @@ Route::get('/customer-in-active/{id}', [App\Http\Controllers\Backend\CustomerCon
 Route::get('/customer-active/{id}', [App\Http\Controllers\Backend\CustomerController::class, 'active'])->name('customer-active');
 
 /* Supplier section */
-Route::get('/supplier-payment', [App\Http\Controllers\Backend\SupplierController::class, 'index'])->name('supplier-payment');
-Route::post('/supplier-payment-save-update', [App\Http\Controllers\Backend\SupplierController::class, 'saveUpdate'])->name('supplier-payment-save-update');
-Route::get('/supplier-payment-edit/{id}', [App\Http\Controllers\Backend\SupplierController::class, 'edit']);
-Route::get('/supplier-payment-delete/{id}', [App\Http\Controllers\Backend\SupplierController::class, 'delete'])->name('supplier-payment-delete');
-Route::get('/supplier-payment-in-active/{id}', [App\Http\Controllers\Backend\SupplierController::class, 'inActive'])->name('supplier-payment-in-active');
-Route::get('/supplier-payment-active/{id}', [App\Http\Controllers\Backend\SupplierController::class, 'active'])->name('supplier-payment-active');
+Route::get('/supplier-payment', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'index'])->name('supplier-payment');
+Route::post('/supplier-payment-save-update', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'saveUpdate'])->name('supplier-payment-save-update');
+Route::get('/supplier-payment-edit/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'edit']);
+Route::get('/supplier-payment-delete/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'delete'])->name('supplier-payment-delete');
+Route::get('/supplier-payment-in-active/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'inActive'])->name('supplier-payment-in-active');
+Route::get('/supplier-payment-active/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'active'])->name('supplier-payment-active');
 
 
 /* branch section */
