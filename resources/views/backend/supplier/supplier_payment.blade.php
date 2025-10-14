@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 @if($user_access->is_create==1)
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <button id="add_button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                             style="float: right;">
                         Add +
                     </button>
@@ -85,110 +85,120 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Supplier') }}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="{{ route('supplier-save-update') }}"
-                                  enctype="multipart/form-data">
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                            <form class="row g-3" method="POST" action="{{ route('supplier-save-update') }}" enctype="multipart/form-data">
                                 @csrf
+                                <input name="id" type="hidden" class="id" value="">
+                                <div class="col-md-6">
+                                    <label for="input1" class="form-label">{{ __('Supplier Name') }}</label>
+                                    <select class="form-control" name="supplier_id">
+                                        <option selected value="0">-- select any one--</option>
+                                        @foreach($supplier_info as $v_supplier)
+                                            <option value="{{$v_supplier->id}}">{{$v_supplier->supplier_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="input2" class="form-label">{{ __('Total Ringgit') }}</label>
+                                    <input type="text" id="total_other_amount" class="form-control" name="total_other_amount" placeholder="Total Ringgit">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('BDT Rate') }}</label>
+                                    <input id="bdt_rat" type="text" class="form-control" name="bdt_rat" value="{{ old('bdt_rat') }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('Total BDT Amount') }}</label>
+                                    <input id="total_bdt_amount" type="text" class="form-control" name="total_bdt_amount" value="{{ old('total_bdt_amount') }}" required readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('Paid Amount') }}</label>
+                                    <input id="paid_amount" type="text" class="form-control" name="paid_amount" value="{{ old('paid_amount') }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('Due Amount') }}</label>
+                                    <input id="due_amount" type="text" class="form-control" name="due_amount" value="{{ old('due_amount') }}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('Payment Method') }}</label>
+                                    <select class="form-control" name="payment_method">
+                                        <option value="0"> -- select any one--</option>
+                                        @foreach($method_info as $v_method)
+                                            <option value="{{$v_method->id}}">{{$v_method->method_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('Account No') }}</label>
+                                    <input id="account_no" type="text" class="form-control" name="account_no" value="{{ old('account_no') }}">
+                                </div>
 
-                                <div class="row mb-3">
-                                    <label for="category"
-                                           class="col-md-4 col-form-label text-md-end">{{ __('Supplier Name') }}</label>
-                                    <div class="col-md-6">
-                                        <input name="id" type="hidden" class="id" value="">
-                                        <input name="code" type="hidden" class="code" value="">
-                                        <input id="supplier" type="text"
-                                               class="form-control @error('supplier') is-invalid @enderror"
-                                               name="supplier_name" value="{{ old('supplier') }}" required
-                                               autocomplete="supplier" autofocus>
 
-                                        @error('supplier')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                <div class="row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary submit"> {{ __('Save') }}</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label for="category"
-                                           class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="phone_number" type="text"
-                                               class="form-control @error('phone_number') is-invalid @enderror"
-                                               name="phone_number" value="{{ old('phone_number') }}" required
-                                               autocomplete="phone_number" autofocus>
+                            </form>
 
-                                        @error('phone_number')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="address"
-                                           class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
-                                    <div class="col-md-6">
-                                        <textarea id="address"
-                                                  class="form-control @error('address') is-invalid @enderror"
-                                                  name="address" required
-                                                  autocomplete="address" autofocus>{{ old('phone_number') }}</textarea>
 
-                                        @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <button type="submit" class="btn btn-primary submit"> {{ __('Save') }}</button>
-                                </div>
-                            </div>
-                        </div>
-                        </form>
                     </div>
 
                 </div>
             </div>
         </div>
-
-
-    </div>
     </div>
     <script>
-        function edit(id) {
-            $.ajax({
-                url: "<?= URL::to('/supplier-edit'); ?>/" + id,
-                type: 'get',
-                data: {},
-                dataType: 'JSON',
-                success: function (response) {
-                    $("#exampleModal").modal("show");
-                    $(".id").val(response.id);
-                    $("#supplier").val(response.supplier_name);
-                    $("#phone_number").val(response.phone_number);
-                    $("#address").val(response.address);
-                    $(".code").val(response.code);
-                    // $("#thumb_img").attr('src',''+response.thumb_image);
-                    if(response.id){
-                        $('.submit').text("Update");
-                        $('#exampleModalLabel').text("Update Supplier");
-                    }
-                }
+        $(document).ready(function() {
+            // Calculate the total BDT amount when BDT Rate or Total Ringgit changes
+            $('#bdt_rat, #total_other_amount').on('input', function() {
+                var totalOtherAmount = parseFloat($('#total_other_amount').val()) || 0;
+                var bdtRate = parseFloat($('#bdt_rat').val()) || 0;
+
+                // Calculate Total BDT Amount
+                var totalBdtAmount = totalOtherAmount * bdtRate;
+                $('#total_bdt_amount').val(totalBdtAmount.toFixed(2));
+
+                // Calculate Due Amount
+                var paidAmount = parseFloat($('#paid_amount').val()) || 0;
+                var dueAmount = totalBdtAmount - paidAmount;
+                $('#due_amount').val(dueAmount.toFixed(2));
             });
-        }
+
+            // Calculate Due Amount when Paid Amount changes
+            $('#paid_amount').on('input', function() {
+                var totalBdtAmount = parseFloat($('#total_bdt_amount').val()) || 0;
+                var paidAmount = parseFloat($(this).val()) || 0;
+
+                var dueAmount = totalBdtAmount - paidAmount;
+                $('#due_amount').val(dueAmount.toFixed(2));
+            });
+
+            // Clear all form fields when Clear button is clicked
+            $('#add_button').on('click', function() {
+                $('form')[0].reset();  // Reset form fields
+                // Clear all input fields and selects
+                $('input[type="text"], input[type="number"], input[type="hidden"], select').val('');
+
+                // Clear the readonly fields (Total BDT Amount and Due Amount)
+                $('#total_bdt_amount').val('');
+                $('#due_amount').val('');
+            });
+
+        });
     </script>
 @endsection
