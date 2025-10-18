@@ -16,7 +16,7 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Supplier Name</th>
+                        <th>Customer Name</th>
                         <th>Invoice No</th>
                         <th>Account No</th>
                         <th>BDT Rate</th>
@@ -29,10 +29,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($supplier_payment_info as $value)
+                    @foreach($customer_payment_info as $value)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $value->supplier_name }}</td>
+                            <td>{{ $value->customer_name }}</td>
                             <td>{{ $value->invoice_no }}</td>
                             <td>{{ $value->ac_no }}</td>
                             <td>{{ $value->bdt_rate }}</td>
@@ -88,19 +88,19 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Supplier Payment Information') }}</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Customer Payment Information') }}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="paymentForm" class="row g-3" method="POST" action="{{ route('supplier-payment-save-update') }}" enctype="multipart/form-data">
+                            <form id="paymentForm" class="row g-3" method="POST" action="{{ route('customer-payment-save-update') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-6">
                                     <input name="id" type="hidden" class="id" value="">
-                                    <label for="input1" class="form-label">{{ __('Select Supplier') }}</label>
-                                    <select class="form-control" name="supplier_id">
+                                    <label for="input1" class="form-label">{{ __('Select Customer') }}</label>
+                                    <select class="form-control" name="customer_id">
                                         <option selected value="0">-- select any one--</option>
-                                        @foreach($supplier_info as $v_supplier)
-                                            <option value="{{$v_supplier->id}}">{{$v_supplier->supplier_name}}</option>
+                                        @foreach($customer_info as $v_cus)
+                                            <option value="{{$v_cus->id}}">{{$v_cus->customer_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -29,7 +29,7 @@ class CustomerPaymentRepoImpl extends EloquentBaseRepository implements Customer
     public function checkRequestValidity($request): array
     {
         $validStatus = Validator::make($request->all(), [
-            'total_amount' => 'required|string'
+            'customer_id' => 'required|integer'
         ]);
         return $validStatus->fails() ? array('isValidationSuccess' => false, 'error' => $validStatus->errors())
             : array('isValidationSuccess' => true);
@@ -43,5 +43,13 @@ class CustomerPaymentRepoImpl extends EloquentBaseRepository implements Customer
             return $this->model::where('org_id', $orgId)->where('branch_id', auth()->user()->branch_id)->where('status', '<>', 9)->get();
         endif;
 
+    }
+
+    public function customerPaymentInfo()
+    {
+        return $this->model::select('customer.customer_name','payment_method.method_name','customer_payment.*')
+            ->leftJoin('customer','customer_payment.customer_id','customer.id')
+            ->leftJoin('payment_method','customer_payment.payment_method_id','payment_method.id')
+            ->where('customer_payment.status', '<>', 9)->get();
     }
 }

@@ -96,6 +96,13 @@ Route::get('/supplier-payment-delete/{id}', [App\Http\Controllers\Backend\Suppli
 Route::get('/supplier-payment-in-active/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'inActive'])->name('supplier-payment-in-active');
 Route::get('/supplier-payment-active/{id}', [App\Http\Controllers\Backend\SupplierPaymentController::class, 'active'])->name('supplier-payment-active');
 
+/* Payment section */
+Route::get('/customer-payment', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'index'])->name('customer-payment');
+Route::post('/customer-payment-save-update', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'saveUpdate'])->name('customer-payment-save-update');
+Route::get('/customer-payment-edit/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'edit']);
+Route::get('/customer-payment-delete/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'delete'])->name('customer-payment-delete');
+Route::get('/customer-payment-in-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'inActive'])->name('customer-payment-in-active');
+Route::get('/customer-payment-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'active'])->name('customer-payment-active');
 
 /* branch section */
 Route::get('/branch', [App\Http\Controllers\Backend\BranchController::class, 'index'])->name('branch');

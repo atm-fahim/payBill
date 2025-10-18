@@ -30,7 +30,7 @@ class SupplierPaymentRepoImpl extends EloquentBaseRepository implements Supplier
     public function checkRequestValidity($request): array
     {
         $validStatus = Validator::make($request->all(), [
-            'total_amount' => 'required|string'
+            'supplier_id' => 'required|integer'
         ]);
         return $validStatus->fails() ? array('isValidationSuccess' => false, 'error' => $validStatus->errors())
             : array('isValidationSuccess' => true);

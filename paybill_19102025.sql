@@ -35,24 +35,25 @@ CREATE TABLE IF NOT EXISTS `access_menu` (
 
 -- Dumping data for table pay_drb_bill.access_menu: ~18 rows (approximately)
 INSERT INTO `access_menu` (`id`, `menu_id`, `user_type`, `is_create`, `is_edit`, `is_delete`, `is_view`, `is_request`, `is_approved`, `created_by`, `update_by`, `created_at`, `updated_at`, `status`) VALUES
-	(1, 1, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(2, 2, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(3, 3, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
+	(1, 1, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(2, 2, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(3, 3, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
 	(4, 4, 'super-admin', 0, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2024-11-15 17:15:48', 9),
 	(5, 5, 'super-admin', 0, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2024-11-15 17:15:48', 9),
 	(6, 6, 'super-admin', 0, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2024-11-15 17:15:48', 9),
-	(7, 7, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(8, 8, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(9, 9, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(10, 10, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(11, 11, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(12, 12, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(13, 13, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-11 17:25:58', 1),
-	(14, 14, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-09 11:35:04', '2025-10-11 17:25:58', 1),
-	(48, 16, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 04:38:52', '2025-10-11 17:25:58', 1),
-	(49, 17, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 04:38:52', '2025-10-11 17:25:58', 1),
-	(50, 18, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2025-10-11 17:25:58', '2025-10-11 17:25:58', 1),
-	(51, 19, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 17:25:58', '2025-10-11 17:25:58', 1);
+	(7, 7, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(8, 8, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(9, 9, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(10, 10, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(11, 11, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(12, 12, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(13, 13, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-08 13:11:56', '2025-10-18 18:59:41', 1),
+	(14, 14, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2023-04-09 11:35:04', '2025-10-18 18:59:41', 1),
+	(48, 16, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 04:38:52', '2025-10-18 18:59:41', 1),
+	(49, 17, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 04:38:52', '2025-10-18 18:59:41', 1),
+	(50, 18, 'super-admin', 1, 0, 0, 0, 0, 0, NULL, NULL, '2025-10-11 17:25:58', '2025-10-18 18:59:41', 1),
+	(51, 19, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-11 17:25:58', '2025-10-18 18:59:41', 1),
+	(52, 20, 'super-admin', 1, 1, 1, 1, 1, 1, NULL, NULL, '2025-10-18 18:59:41', '2025-10-18 18:59:41', 1);
 
 -- Dumping structure for table pay_drb_bill.backend_menu
 CREATE TABLE IF NOT EXISTS `backend_menu` (
@@ -86,7 +87,8 @@ INSERT INTO `backend_menu` (`id`, `menu_name`, `slug`, `menu_url`, `icon`, `pare
 	(16, 'Customer', 'customer', 'customer', 'plus', 1, 1, '2025-10-11 04:38:15', '2025-10-11 04:38:15'),
 	(17, 'Supplier', 'supplier', 'supplier', 'plus', 1, 1, '2025-10-11 04:38:35', '2025-10-11 04:38:35'),
 	(18, 'Accounting', 'accounting', '#', 'abacus', 0, 1, '2025-10-11 13:28:01', '2025-10-11 13:28:01'),
-	(19, 'Supplier Payment', 'supplier-payment', 'supplier-payment', 'Plus', 18, 1, '2025-10-11 17:25:43', '2025-10-11 17:25:43');
+	(19, 'Supplier Payment', 'supplier-payment', 'supplier-payment', 'Plus', 18, 1, '2025-10-11 17:25:43', '2025-10-11 17:25:43'),
+	(20, 'Customer Payment', 'customer-payment', 'customer-payment', 'plus', 18, 1, '2025-10-18 18:59:25', '2025-10-18 18:59:25');
 
 -- Dumping structure for table pay_drb_bill.bank_payment
 CREATE TABLE IF NOT EXISTS `bank_payment` (
@@ -163,7 +165,8 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 -- Dumping data for table pay_drb_bill.category: ~0 rows (approximately)
 INSERT INTO `category` (`id`, `category`, `slug`, `parent_id`, `thumb_image`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 'General', 'general', 0, NULL, 1, '2023-05-15 13:30:14', '2023-08-06 16:48:22');
+	(1, 'General', 'general', 0, NULL, 1, '2023-05-15 13:30:14', '2023-08-06 16:48:22'),
+	(2, 'test', 'test', 0, NULL, 1, '2025-10-18 18:07:24', '2025-10-18 18:07:24');
 
 -- Dumping structure for table pay_drb_bill.contact_us
 CREATE TABLE IF NOT EXISTS `contact_us` (
@@ -225,13 +228,14 @@ CREATE TABLE IF NOT EXISTS `customer_payment` (
   `ac_no` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `bdt_rate` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `other_rate` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `total_amount` decimal(20,2) DEFAULT NULL,
+  `other_amount` varchar(100) DEFAULT NULL,
+  `bdt_amount` decimal(20,2) DEFAULT NULL,
   `grand_amount` decimal(20,2) DEFAULT NULL,
-  `pad_amount` decimal(20,2) DEFAULT NULL,
+  `paid_amount` decimal(20,2) DEFAULT NULL,
   `due_amount` decimal(20,2) DEFAULT NULL,
   `due_pay_amount` decimal(20,2) DEFAULT NULL,
   `payment_status` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `payment_id` int DEFAULT NULL,
+  `payment_method_id` int DEFAULT NULL,
   `branch_id` int DEFAULT NULL,
   `org_id` int DEFAULT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -243,6 +247,8 @@ CREATE TABLE IF NOT EXISTS `customer_payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table pay_drb_bill.customer_payment: ~0 rows (approximately)
+INSERT INTO `customer_payment` (`id`, `customer_id`, `invoice_no`, `ac_no`, `bdt_rate`, `other_rate`, `other_amount`, `bdt_amount`, `grand_amount`, `paid_amount`, `due_amount`, `due_pay_amount`, `payment_status`, `payment_method_id`, `branch_id`, `org_id`, `email`, `phone_number`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 1, '2510190000', '32132165', '25', NULL, '30', 750.00, NULL, 750.00, 0.00, NULL, NULL, 4, 1, NULL, NULL, NULL, 1, '2025-10-18 19:06:11', '2025-10-18 19:06:11');
 
 -- Dumping structure for table pay_drb_bill.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
@@ -461,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `supplier_payment` (
   `other_rate` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `other_amount` decimal(20,2) DEFAULT NULL,
   `bdt_amount` decimal(20,2) DEFAULT NULL,
-  `pad_amount` decimal(20,2) DEFAULT NULL,
+  `paid_amount` decimal(20,2) DEFAULT NULL,
   `due_amount` decimal(20,2) DEFAULT NULL,
   `due_pay_amount` decimal(20,2) DEFAULT NULL,
   `payment_status` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -477,6 +483,10 @@ CREATE TABLE IF NOT EXISTS `supplier_payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table pay_drb_bill.supplier_payment: ~0 rows (approximately)
+INSERT INTO `supplier_payment` (`id`, `supplier_id`, `invoice_no`, `ac_no`, `bdt_rate`, `other_rate`, `other_amount`, `bdt_amount`, `paid_amount`, `due_amount`, `due_pay_amount`, `payment_status`, `payment_method_id`, `branch_id`, `org_id`, `email`, `phone_number`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 1, '2510190000', '13231321', '25', NULL, 30.00, 750.00, 750.00, 0.00, NULL, NULL, 4, 1, NULL, NULL, NULL, 1, '2025-10-18 18:22:04', '2025-10-18 18:22:04'),
+	(2, 1, '2510190000', '13231321', '25', NULL, 30.00, 750.00, 750.00, 0.00, NULL, NULL, 4, 1, NULL, NULL, NULL, 1, '2025-10-18 18:23:14', '2025-10-18 18:23:14'),
+	(3, 1, '2510190000', '01717302935', '20', NULL, 30.00, 600.00, 600.00, 0.00, NULL, NULL, 4, 1, NULL, NULL, NULL, 1, '2025-10-18 18:28:13', '2025-10-18 18:28:13');
 
 -- Dumping structure for table pay_drb_bill.users
 CREATE TABLE IF NOT EXISTS `users` (
