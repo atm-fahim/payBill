@@ -56,7 +56,7 @@ class SupplierPaymentController extends BaseController
 
     public function saveUpdate(Request $request)
     {
-
+dd($request->all());
         $data = array();
         $validation = $this->spPmtRepo->checkRequestValidity($request);
         if (!$validation["isValidationSuccess"]) {
@@ -64,13 +64,18 @@ class SupplierPaymentController extends BaseController
         }
         try {
             $id                     = $request->input('id');
-            $code                   = $request->input('code');
-            $data['supplier_name']  = $request->input('supplier_name');
+            $data['supplier_name']  = $request->input('supplier_id');
+            $data['other_amount']  = $request->input('total_other_amount');
+            $data['bdt_rate']  = $request->input('bdt_rat');
+            $data['bdt_amount']  = $request->input('total_bdt_amount');
+            $data['paid_amount']  = $request->input('paid_amount');
+            $data['due_amount']  = $request->input('due_amount');
+            $data['payment_method_id']  = $request->input('payment_method');
+            $data['ac_no']  = $request->input('account_no');
+            $data['invoice_no']  = $this->random_token();
             $data['branch_id']      = auth()->user()->branch_id;
-            $data['address']        = $request->input('address');
-            $data['phone_number']   = $request->input('phone_number');
-            $data['slug']           = Str::slug($data['supplier_name']);
-            $data['code']           = (!empty($code))?$code:$this->generateRandomString($data['supplier_name']);
+
+           // $data['code']           = (!empty($code))?$code:$this->generateRandomString($data['supplier_name']);
             (!empty($id)) ? $this->spPmtRepo->update($id, $data) : $this->spPmtRepo->save($data);
             return Redirect::to('supplier-payment');
         } catch (\Exception $e) {

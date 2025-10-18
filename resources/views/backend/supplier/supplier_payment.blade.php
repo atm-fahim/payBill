@@ -88,17 +88,16 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Supplier') }}</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Supplier Payment Information') }}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-                            <form class="row g-3" method="POST" action="{{ route('supplier-save-update') }}" enctype="multipart/form-data">
+                            <form class="row g-3" method="POST" action="{{ route('supplier-payment-save-update') }}" enctype="multipart/form-data">
                                 @csrf
                                 <input name="id" type="hidden" class="id" value="">
                                 <div class="col-md-6">
-                                    <label for="input1" class="form-label">{{ __('Supplier Name') }}</label>
+                                    <label for="input1" class="form-label">{{ __('Select Supplier') }}</label>
                                     <select class="form-control" name="supplier_id">
                                         <option selected value="0">-- select any one--</option>
                                         @foreach($supplier_info as $v_supplier)
@@ -136,25 +135,20 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Account No') }}</label>
+                                    <label class="form-label">{{ __('Account/Mobile No') }}</label>
                                     <input id="account_no" type="text" class="form-control" name="account_no" value="{{ old('account_no') }}">
                                 </div>
-
-
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                 Close
                                             </button>
-                                            <button type="submit" class="btn btn-primary submit"> {{ __('Save') }}</button>
+                                            <input type="submit" class="btn btn-primary submit" value="Save" />
                                         </div>
                                     </div>
                                 </div>
                             </form>
-
-
-
                         </div>
                     </div>
 
@@ -162,6 +156,7 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             // Calculate the total BDT amount when BDT Rate or Total Ringgit changes
