@@ -104,6 +104,15 @@ Route::get('/customer-payment-delete/{id}', [App\Http\Controllers\Backend\Custom
 Route::get('/customer-payment-in-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'inActive'])->name('customer-payment-in-active');
 Route::get('/customer-payment-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'active'])->name('customer-payment-active');
 
+/* Order Payment section */
+Route::get('/payment-order', [App\Http\Controllers\Backend\PaymentOrderController::class, 'index'])->name('payment-order');
+Route::post('/payment-order-save-update', [App\Http\Controllers\Backend\PaymentOrderController::class, 'saveUpdate'])->name('payment-order-save-update');
+Route::get('/payment-order-edit/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'edit']);
+Route::get('/payment-order-delete/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'delete'])->name('payment-order-delete');
+Route::get('/payment-order-in-active/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'inActive'])->name('payment-order-in-active');
+Route::get('/payment-order-active/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'active'])->name('payment-order-active');
+
+
 /* Rate setup section */
 Route::get('/add-rate', [App\Http\Controllers\Backend\RateController::class, 'index'])->name('add-rate');
 Route::post('/rate-save-update', [App\Http\Controllers\Backend\RateController::class, 'saveUpdate'])->name('rate-save-update');
