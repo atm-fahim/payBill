@@ -104,6 +104,14 @@ Route::get('/customer-payment-delete/{id}', [App\Http\Controllers\Backend\Custom
 Route::get('/customer-payment-in-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'inActive'])->name('customer-payment-in-active');
 Route::get('/customer-payment-active/{id}', [App\Http\Controllers\Backend\CustomerPaymentController::class, 'active'])->name('customer-payment-active');
 
+/* Rate setup section */
+Route::get('/add-rate', [App\Http\Controllers\Backend\RateController::class, 'index'])->name('add-rate');
+Route::post('/rate-save-update', [App\Http\Controllers\Backend\RateController::class, 'saveUpdate'])->name('rate-save-update');
+Route::get('/rate-edit/{id}', [App\Http\Controllers\Backend\RateController::class, 'edit']);
+Route::get('/rate-delete/{id}', [App\Http\Controllers\Backend\RateController::class, 'delete'])->name('rate-delete');
+Route::get('/rate-in-active/{id}', [App\Http\Controllers\Backend\RateController::class, 'inActive'])->name('rate-in-active');
+Route::get('/rate-active/{id}', [App\Http\Controllers\Backend\RateController::class, 'active'])->name('rate-active');
+
 /* branch section */
 Route::get('/branch', [App\Http\Controllers\Backend\BranchController::class, 'index'])->name('branch');
 Route::post('/branch-save-update', [App\Http\Controllers\Backend\BranchController::class, 'saveUpdate'])->name('branch-save-update');
