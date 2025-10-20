@@ -103,24 +103,24 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="paymentForm" class="row g-3" method="POST" action="{{ route('customer-payment-save-update') }}" enctype="multipart/form-data">
+                            <form id="paymentOrderForm" class="row g-3" method="POST" action="{{ route('payment-order-save-update') }}" enctype="multipart/form-data">
                                 @csrf
                                 <input name="id" type="hidden" class="id" value="">
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('BDT Rate') }}</label>
-                                    <select class="form-control" name="bdt_rat">
+                                    <select class="form-control" name="bdt_rate">
                                         <option selected value="0">-- select any one--</option>
                                         @foreach($rate_info as $v_rate)
-                                            <option value="{{$v_rate->id}}">{{$v_rate->bdt_rate}}</option>
+                                            <option value="{{$v_rate->bdt_rate}}">{{$v_rate->bdt_rate}}</option>
                                         @endforeach
                                     </select>
                                </div>
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('Ringgit Rate') }}</label>
-                                    <select class="form-control" name="other_rat">
+                                    <select class="form-control" name="other_rate">
                                         <option selected value="0">-- select any one--</option>
                                         @foreach($rate_info as $v_rate)
-                                            <option value="{{$v_rate->id}}">{{$v_rate->other_rate}}</option>
+                                            <option value="{{$v_rate->other_rate}}">{{$v_rate->other_rate}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('Customer Paid Amount') }}</label>
-                                    <input id="customer_paid_amount" type="text" class="form-control" name="paid_amount" value="{{ old('paid_amount') }}">
+                                    <input id="customer_paid_amount" type="text" class="form-control" name="customer_paid_amount" value="{{ old('paid_amount') }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('Supplier Paid Amount') }}</label>
@@ -212,7 +212,7 @@
     <script>
         $(document).ready(function() {
             // Handle form submission via AJAX
-            $('#paymentForm').on('submit', function(e) {
+            $('#paymentOrderForm').on('submit', function(e) {
                 e.preventDefault(); // Prevent form from submitting the normal way
 
                 var formData = new FormData(this); // Get form data
@@ -242,30 +242,57 @@
                 });
             });
 
-            // Calculate the Total BDT Amount dynamically
-            $('#bdt_rat, #total_other_amount').on('input', function() {
-                var totalOtherAmount = parseFloat($('#total_other_amount').val()) || 0;
-                var bdtRate = parseFloat($('#bdt_rat').val()) || 0;
 
-                // Calculate Total BDT Amount
-                var totalBdtAmount = totalOtherAmount * bdtRate;
-                $('#total_bdt_amount').val(totalBdtAmount.toFixed(2));
+        });
+        $(document).ready(function() {
+            // Function to calculate amounts based on inputs
+            function calculateAmounts() {
+                var totalOtherAmount = parseFloat($('#total_other_amount').val()) || 0; // Get total_other_amount value
+                var bdtRateId = $('select[name="bdt_rate"]').val(); // Get selected BDT rate ID
 
-                // Calculate Due Amount
-                var paidAmount = parseFloat($('#paid_amount').val()) || 0;
-                var dueAmount = totalBdtAmount - paidAmount;
-                $('#due_amount').val(dueAmount.toFixed(2));
+                // Get the selected BDT rate value
+                var bdtRate = 0;
+                $('select[name="bdt_rate"] option').each(function() {
+                    if ($(this).val() == bdtRateId) {
+                        bdtRate = parseFloat($(this).text()) || 0;
+                    }
+                });
+
+                if (bdtRate > 0) {
+                    // Calculate total BDT amount
+                    var totalBdtAmount = totalOtherAmount * bdtRate;
+                    $('#total_bdt_amount').val(totalBdtAmount.toFixed(2)); // Update total_bdt_amount
+
+                    // Get the customer and supplier paid amounts
+                    var customerPaidAmount = parseFloat($('#customer_paid_amount').val()) || 0;
+                    var supplierPaidAmount = parseFloat($('#supplier_paid_amount').val()) || 0;
+
+                    // Calculate customer and supplier due amounts
+                    var customerDueAmount = totalBdtAmount - customerPaidAmount;
+                    var supplierDueAmount = totalBdtAmount - supplierPaidAmount;
+
+                    // Update customer and supplier due amounts
+                    $('#customer_due_amount').val(customerDueAmount.toFixed(2));
+                    $('#supplier_due_amount').val(supplierDueAmount.toFixed(2));
+                }
+            }
+
+            // Event listener for changes in the total_other_amount input
+            $('#total_other_amount').on('input', function() {
+                calculateAmounts(); // Recalculate when total_other_amount changes
             });
 
-            // Calculate Due Amount when Paid Amount changes
-            $('#paid_amount').on('input', function() {
-                var totalBdtAmount = parseFloat($('#total_bdt_amount').val()) || 0;
-                var paidAmount = parseFloat($(this).val()) || 0;
+            // Event listener for changes in the customer_paid_amount and supplier_paid_amount inputs
+            $('#customer_paid_amount, #supplier_paid_amount').on('input', function() {
+                calculateAmounts(); // Recalculate when paid amounts change
+            });
 
-                var dueAmount = totalBdtAmount - paidAmount;
-                $('#due_amount').val(dueAmount.toFixed(2));
+            // Event listener for changes in the BDT rate selection
+            $('select[name="bdt_rate"]').on('change', function() {
+                calculateAmounts(); // Recalculate when the BDT rate changes
             });
         });
+
 
     </script>
 @endsection

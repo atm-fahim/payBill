@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('BDT Rate') }}</label>
-                                    <input id="bdt_rat" type="text" class="form-control" name="bdt_rat" value="{{ old('bdt_rat') }}" required>
+                                    <input id="bdt_rat" type="text" class="form-control" name="bdt_rate" value="{{ old('bdt_rat') }}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">{{ __('Total BDT Amount') }}</label>

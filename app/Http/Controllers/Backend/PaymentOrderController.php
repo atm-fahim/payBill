@@ -71,6 +71,7 @@ class PaymentOrderController extends BaseController
 
     public function saveUpdate(Request $request)
     {
+       // dd($request->all());
         $data = array();
         $validation = $this->ordPmtRepo->checkRequestValidity($request);
         if (!$validation["isValidationSuccess"]) {
@@ -79,17 +80,22 @@ class PaymentOrderController extends BaseController
         try {
             $id                             = $request->input('id');
             $data['customer_id']            = $request->input('customer_id');
+            $data['supplier_id']            = $request->input('supplier_id');
+            $data['other_rate']               = $request->input('other_rate');
             $data['other_amount']           = $request->input('total_other_amount');
-            $data['bdt_rate']               = $request->input('bdt_rat');
+            $data['bdt_rate']               = $request->input('bdt_rate');
             $data['bdt_amount']             = $request->input('total_bdt_amount');
             $data['customer_paid_amount']   = $request->input('customer_paid_amount');
             $data['customer_due_amount']    = $request->input('customer_due_amount');
-            $data['customer_payment_method_id'] = $request->input('customer_payment_method_id');
-            $data['customer_ac_no']             = $request->input('customer_ac_no');
+            $data['customer_payment_method_id'] = $request->input('customer_payment_method');
+            $data['customer_due_pay_amount']    = $request->input('customer_due_pay_amount');
+            $data['customer_ac_no']             = $request->input('customer_account_no');
             $data['supplier_paid_amount']       = $request->input('supplier_paid_amount');
             $data['supplier_due_amount']        = $request->input('supplier_due_amount');
             $data['supplier_due_pay_amount']    = $request->input('supplier_due_pay_amount');
-            $data['supplier_ac_no']             = $request->input('supplier_ac_no');
+            $data['supplier_ac_no']             = $request->input('supplier_account_no');
+            $data['supplier_payment_method_id'] = $request->input('supplier_payment_method');
+
             $data['invoice_no']                 = $this->random_token();
             $data['branch_id']                  = auth()->user()->branch_id;
             (!empty($id)) ? $this->ordPmtRepo->update($id, $data) : $this->ordPmtRepo->save($data);
