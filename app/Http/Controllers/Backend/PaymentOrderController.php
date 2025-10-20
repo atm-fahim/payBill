@@ -41,6 +41,7 @@ class PaymentOrderController extends BaseController
         $this->middleware('auth');
         $this->cusRepo = $cusRepo;
         $this->suppRepo = $suppRepo;
+        $this->rateRepo = $rateRepo;
         $this->ordPmtRepo = $ordPmtRepo;
         $this->pmtMtdRepo = $pmtMtdRepo;
     }
@@ -52,14 +53,19 @@ class PaymentOrderController extends BaseController
      */
     public function index()
     {
-        $userAccessData = $this->userAccessFunction();
-        $customerInfo = $this->cusRepo->withoutDeletingData();
-        $paymentMethodInfo = $this->pmtMtdRepo->withoutDeletingData();
-        $customerPaymentInfo = $this->ordPmtRepo->customerPaymentInfo();
+        $userAccessData         = $this->userAccessFunction();
+        $customerInfo           = $this->cusRepo->withoutDeletingData();
+        $supplierInfo           = $this->suppRepo->withoutDeletingData();
+//        $rateBdtInfo               = $this->rateRepo->getRateInfoByCurrency('BDT');
+        $rateInfo               = $this->rateRepo->withoutDeletingData();
+        $paymentMethodInfo      = $this->pmtMtdRepo->withoutDeletingData();
+        $orderPaymentInfo    = $this->ordPmtRepo->paymentOrderInfo();
         return view('backend.order.order_payment')
             ->with('customer_info', $customerInfo)
+            ->with('supplier_info', $supplierInfo)
             ->with('method_info', $paymentMethodInfo)
-            ->with('customer_payment_info', $customerPaymentInfo)
+            ->with('order_info', $orderPaymentInfo)
+            ->with('rate_info', $rateInfo)
             ->with('user_access',$userAccessData);
     }
 
@@ -71,30 +77,25 @@ class PaymentOrderController extends BaseController
             return response()->json(['status' => false, 'message' => 'Validation failed', 'error' => $validation["error"]], 400);
         }
         try {
-            $id                     = $request->input('id');
-            $data['customer_id']  = $request->input('customer_id');
-            $data['other_amount']  = $request->input('total_other_amount');
-            $data['bdt_rate']  = $request->input('bdt_rat');
-            $data['bdt_amount']  = $request->input('total_bdt_amount');
-
-            $data['customer_paid_amount']  = $request->input('customer_paid_amount');
-            $data['customer_due_amount']  = $request->input('customer_due_amount');
-            $data['customer_payment_method_id']  = $request->input('customer_payment_method_id');
-            $data['customer_ac_no']  = $request->input('customer_ac_no');
-
-            $data['supplier_paid_amount']  = $request->input('supplier_paid_amount');
-            $data['supplier_due_amount']  = $request->input('supplier_due_amount');
-            $data['supplier_due_pay_amount']  = $request->input('supplier_due_pay_amount');
-            $data['supplier_ac_no']  = $request->input('supplier_ac_no');
-
-            $data['invoice_no']  = $this->random_token();
-            $data['branch_id']      = auth()->user()->branch_id;
-
-           // $data['code']           = (!empty($code))?$code:$this->generateRandomString($data['supplier_name']);
+            $id                             = $request->input('id');
+            $data['customer_id']            = $request->input('customer_id');
+            $data['other_amount']           = $request->input('total_other_amount');
+            $data['bdt_rate']               = $request->input('bdt_rat');
+            $data['bdt_amount']             = $request->input('total_bdt_amount');
+            $data['customer_paid_amount']   = $request->input('customer_paid_amount');
+            $data['customer_due_amount']    = $request->input('customer_due_amount');
+            $data['customer_payment_method_id'] = $request->input('customer_payment_method_id');
+            $data['customer_ac_no']             = $request->input('customer_ac_no');
+            $data['supplier_paid_amount']       = $request->input('supplier_paid_amount');
+            $data['supplier_due_amount']        = $request->input('supplier_due_amount');
+            $data['supplier_due_pay_amount']    = $request->input('supplier_due_pay_amount');
+            $data['supplier_ac_no']             = $request->input('supplier_ac_no');
+            $data['invoice_no']                 = $this->random_token();
+            $data['branch_id']                  = auth()->user()->branch_id;
             (!empty($id)) ? $this->ordPmtRepo->update($id, $data) : $this->ordPmtRepo->save($data);
             return response()->json([
-                'status' => 'success',
-                'message' => 'Payment has been successfully saved.',
+                'status'    => 'success',
+                'message'   => 'Payment has been successfully saved.',
                 'redirect_url' => route('payment-order') // Example URL you want to redirect to
             ]);
         } catch (\Exception $e) {

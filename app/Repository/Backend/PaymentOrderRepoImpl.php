@@ -44,7 +44,7 @@ class PaymentOrderRepoImpl extends EloquentBaseRepository implements PaymentOrde
         return $this->model::select(
             'supplier.supplier_name',
             'customer.customer_name',
-            'customer_payment.*',
+            'payment_order.*',
             'payment_method.method_name as customer_method_name',
             'supplier_payment.method_name as supplier_method_name'
         )
@@ -52,8 +52,7 @@ class PaymentOrderRepoImpl extends EloquentBaseRepository implements PaymentOrde
             ->leftJoin('supplier', 'payment_order.supplier_id', '=', 'supplier.id')
             ->leftJoin('payment_method', 'payment_order.customer_payment_method_id', '=', 'payment_method.id')
             ->leftJoin('payment_method as supplier_payment', 'payment_order.supplier_payment_method_id', '=', 'supplier_payment.id')
-            ->leftJoin('customer_payment', 'payment_order.id', '=', 'customer_payment.payment_order_id') // Join with customer_payment
-            ->where('customer_payment.status', '<>', 9)  // Filter the status
+            ->where('payment_order.status', '<>', 9)  // Filter the status
             ->get(); // Fetch the data
     }
 

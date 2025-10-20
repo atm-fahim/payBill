@@ -41,5 +41,14 @@ class RateRepoImpl extends EloquentBaseRepository implements RateRepo
     {
         return $this->model::where('id', $id)->first();
     }
+    public function getRateInfoByCurrency($currency)
+    {
+        if($currency=='BDT'){
+            return $this->model::where('id', $id)->get();
+        }else{
+            return $this->model::where('id', $id)->get();
+        }
+
+    }
 
 }

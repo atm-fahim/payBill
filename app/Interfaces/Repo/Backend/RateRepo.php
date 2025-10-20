@@ -9,4 +9,6 @@ interface RateRepo extends EloquentRepositoryInterface
     public function checkRequestValidity($request);
 
     public function getRateInfoById($id);
+
+    public function getRateInfoByCurrency($currency);
 }
