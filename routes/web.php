@@ -112,6 +112,8 @@ Route::get('/payment-order-delete/{id}', [App\Http\Controllers\Backend\PaymentOr
 Route::get('/payment-order-in-active/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'inActive'])->name('payment-order-in-active');
 Route::get('/payment-order-active/{id}', [App\Http\Controllers\Backend\PaymentOrderController::class, 'active'])->name('payment-order-active');
 
+/* Reports */
+Route::get('/customer-payment-reports', [App\Http\Controllers\Backend\PaymentReportsController::class, 'customerReports'])->name('customer-payment-reports');
 
 /* Rate setup section */
 Route::get('/add-rate', [App\Http\Controllers\Backend\RateController::class, 'index'])->name('add-rate');
