@@ -114,6 +114,9 @@ Route::get('/payment-order-active/{id}', [App\Http\Controllers\Backend\PaymentOr
 
 /* Reports */
 Route::get('/customer-payment-reports', [App\Http\Controllers\Backend\PaymentReportsController::class, 'customerReports'])->name('customer-payment-reports');
+Route::match(array('get', 'post'),'/customer-payment-view', [App\Http\Controllers\Backend\PaymentReportsController::class, 'searchCustomerPayment'])->name('customer-payment-view');
+Route::get('/supplier-payment-reports', [App\Http\Controllers\Backend\PaymentReportsController::class, 'supplierReports'])->name('supplier-payment-reports');
+Route::match(array('get', 'post'),'/supplier-payment-view', [App\Http\Controllers\Backend\PaymentReportsController::class, 'searchSupplierPayment'])->name('supplier-payment-view');
 
 /* Rate setup section */
 Route::get('/add-rate', [App\Http\Controllers\Backend\RateController::class, 'index'])->name('add-rate');

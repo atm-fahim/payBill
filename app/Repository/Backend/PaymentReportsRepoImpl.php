@@ -28,36 +28,85 @@ class PaymentReportsRepoImpl extends EloquentBaseRepository implements PaymentRe
 
     public function paymentCustomerOrderInfo($params)
     {
-        return $this->model::select(
-            'supplier.supplier_name',
-            'customer.customer_name',
-            'payment_order.*',
-            'payment_method.method_name as customer_method_name',
-            'supplier_payment.method_name as supplier_method_name'
-        )
-            ->leftJoin('customer', 'payment_order.customer_id', '=', 'customer.id')
-            ->leftJoin('supplier', 'payment_order.supplier_id', '=', 'supplier.id')
-            ->leftJoin('payment_method', 'payment_order.customer_payment_method_id', '=', 'payment_method.id')
-            ->leftJoin('payment_method as supplier_payment', 'payment_order.supplier_payment_method_id', '=', 'supplier_payment.id')
-            ->where('payment_order.status', '<>', 9)  // Filter the status
-            ->get(); // Fetch the data
+        if(!empty($params)) {
+            // Start with the basic query
+            $query = $this->model::select(
+                'customer.customer_name',
+                'payment_order.*',
+                'payment_method.method_name as customer_method_name',
+            )
+                ->leftJoin('customer', 'payment_order.customer_id', '=', 'customer.id')
+                ->leftJoin('payment_method', 'payment_order.customer_payment_method_id', '=', 'payment_method.id')
+                ->where('payment_order.status', '<>', 9); // Exclude status 9 from all queries
+
+            // Apply filters based on parameters
+            // Only filter by customer if a valid customer ID is provided (not null and not 0)
+            if (isset($params['customerId']) && $params['customerId'] > 0) {
+                $query->where('payment_order.customer_id', $params['customerId']);
+            }
+
+            if (!empty($params['fromDate']) && !empty($params['toDate'])) {
+                $query->whereDate('payment_order.created_at', '>=', $params['fromDate'])
+                    ->whereDate('payment_order.created_at', '<=', $params['toDate']);
+            }
+
+            // Handle the payment status filter
+            if (!empty($params['payment'])) {
+                $paymentCondition = $params['payment'] == 'paid' ? 0 : '>';
+                $query->where('payment_order.customer_due_amount', $paymentCondition, 0);
+            }
+
+            // Handle the payment method filter
+            if (!empty($params['payment_method'])) {
+                $query->where('payment_order.customer_payment_method_id', $params['payment_method']);
+            }
+
+            // Execute the query and return the results
+            return $query->get();
+        }
     }
+
+
+
+
 
     public function paymentSupplierOrderInfo($params)
     {
-        return $this->model::select(
-            'supplier.supplier_name',
-            'customer.customer_name',
-            'payment_order.*',
-            'payment_method.method_name as customer_method_name',
-            'supplier_payment.method_name as supplier_method_name'
-        )
-            ->leftJoin('customer', 'payment_order.customer_id', '=', 'customer.id')
-            ->leftJoin('supplier', 'payment_order.supplier_id', '=', 'supplier.id')
-            ->leftJoin('payment_method', 'payment_order.customer_payment_method_id', '=', 'payment_method.id')
-            ->leftJoin('payment_method as supplier_payment', 'payment_order.supplier_payment_method_id', '=', 'supplier_payment.id')
-            ->where('payment_order.status', '<>', 9)  // Filter the status
-            ->get(); // Fetch the data
+        if(!empty($params)) {
+            $query = $this->model::select(
+                'supplier.supplier_name',
+                'payment_order.*',
+                'payment_method.method_name as supplier_method_name',
+            )
+                ->leftJoin('supplier', 'payment_order.supplier_id', '=', 'supplier.id')
+                ->leftJoin('payment_method', 'payment_order.supplier_payment_method_id', '=', 'payment_method.id')
+                ->where('payment_order.status', '<>', 9); // Exclude status 9 from all queries
+
+            // Apply filters based on parameters
+            // Only filter by supplier if a valid supplier ID is provided (not null and not 0)
+            if (isset($params['supplierId']) && $params['supplierId'] > 0) {
+                $query->where('payment_order.supplier_id', $params['supplierId']);
+            }
+
+            if (!empty($params['fromDate']) && !empty($params['toDate'])) {
+                $query->whereDate('payment_order.created_at', '>=', $params['fromDate'])
+                    ->whereDate('payment_order.created_at', '<=', $params['toDate']);
+            }
+
+            // Handle the payment status filter
+            if (!empty($params['payment'])) {
+                $paymentCondition = $params['payment'] == 'paid' ? 0 : '>';
+                $query->where('payment_order.supplier_due_amount', $paymentCondition, 0);
+            }
+
+            // Handle the payment method filter
+            if (!empty($params['payment_method'])) {
+                $query->where('payment_order.supplier_payment_method_id', $params['payment_method']);
+            }
+
+            // Execute the query and return the results
+            return $query->get();
+        }
     }
 
 }

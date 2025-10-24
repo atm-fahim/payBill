@@ -172,20 +172,6 @@
         font-size: 1.3rem;
     }
 
-    .btn-excel:disabled,
-    .btn-print:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: none !important;
-        box-shadow: none !important;
-    }
-
-    .btn-excel:disabled:hover,
-    .btn-print:disabled:hover {
-        transform: none !important;
-        box-shadow: none !important;
-    }
-
     /* Table Container - Responsive */
     .report-table-container {
         background: white;
@@ -464,7 +450,7 @@
         body:not(.printing-invoice) .report-table {
             min-width: 100% !important;
         }
-        
+
         /* Ensure br tags work in headers */
         body:not(.printing-invoice) .PrintReports thead th br {
             display: block !important;
@@ -545,60 +531,60 @@
             size: landscape;
             margin: 0.6cm;
         }
-        
+
         /* Optimize column widths for PrintReports - Total 100% */
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(1) { 
-            width: 3% !important; 
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(1) {
+            width: 3% !important;
             min-width: 3% !important;
         } /* SL */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(2) { 
-            width: 14% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(2) {
+            width: 14% !important;
             min-width: 14% !important;
-        } /* Customer Name */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(3) { 
-            width: 10% !important; 
+        } /* Supplier Name */
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(3) {
+            width: 10% !important;
             min-width: 10% !important;
         } /* Invoice No */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(4) { 
-            width: 10% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(4) {
+            width: 10% !important;
             min-width: 10% !important;
         } /* Account No */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(5) { 
-            width: 8% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(5) {
+            width: 8% !important;
             min-width: 8% !important;
         } /* BDT Rate */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(6) { 
-            width: 10% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(6) {
+            width: 10% !important;
             min-width: 10% !important;
         } /* BDT Amount */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(7) { 
-            width: 8% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(7) {
+            width: 8% !important;
             min-width: 8% !important;
         } /* Ringgit Rate */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(8) { 
-            width: 10% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(8) {
+            width: 10% !important;
             min-width: 10% !important;
         } /* Ringgit Amount */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(9) { 
-            width: 9% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(9) {
+            width: 9% !important;
             min-width: 9% !important;
         } /* Pad Amount */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(10) { 
-            width: 9% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(10) {
+            width: 9% !important;
             min-width: 9% !important;
         } /* Due Amount */
-        
-        body:not(.printing-invoice) .PrintReports thead th:nth-child(11) { 
-            width: 9% !important; 
+
+        body:not(.printing-invoice) .PrintReports thead th:nth-child(11) {
+            width: 9% !important;
             min-width: 9% !important;
         } /* Payment Method */
 
@@ -622,7 +608,7 @@
         body:not(.printing-invoice) .PrintReports tfoot td:nth-child(9) { width: 9% !important; }
         body:not(.printing-invoice) .PrintReports tfoot td:nth-child(10) { width: 9% !important; }
         body:not(.printing-invoice) .PrintReports tfoot td:nth-child(11) { width: 9% !important; }
-        
+
         /* Force all 11 columns to be visible */
         body:not(.printing-invoice) .PrintReports thead th,
         body:not(.printing-invoice) .PrintReports tbody td,
@@ -644,7 +630,7 @@
             opacity: 1 !important;
             max-width: none !important;
         }
-        
+
         /* Only hide the Action column (12th column) */
         body:not(.printing-invoice) .PrintReports thead th:nth-child(12),
         body:not(.printing-invoice) .PrintReports tbody td:nth-child(12),
@@ -699,32 +685,6 @@
 
     .report-card {
         animation: fadeIn 0.5s ease-out;
-    }
-
-    /* No Data Message */
-    .no-data-message {
-        text-align: center;
-        padding: 50px 30px !important;
-        color: #64748b;
-    }
-
-    .no-data-message i {
-        font-size: 3rem;
-        display: block;
-        margin-bottom: 15px;
-        color: #94a3b8;
-    }
-
-    .no-data-message strong {
-        font-size: 1.2rem;
-        color: #334155;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .no-data-message small {
-        font-size: 0.95rem;
-        color: #64748b;
     }
 
     /* Info Badge */
@@ -907,18 +867,18 @@
 
     <div class="card report-card no-print">
         <div class="report-header">
-            <h5 class="report-title">Customer Payment Reports</h5>
+            <h5 class="report-title">Supplier Payment Reports</h5>
         </div>
         <div class="card-body">
-            <form id="paymentForm" class="row g-3" method="POST" action="{{ route('customer-payment-view') }}" enctype="multipart/form-data">
+            <form id="paymentForm" class="row g-3" method="POST" action="{{ route('supplier-payment-view') }}" enctype="multipart/form-data">
                 @csrf
             <div class="row row-cols-1 g-3 row-cols-lg-auto align-items-center">
                 <div class="col">
-                    <label class="form-label">{{ __('select Customer') }}</label>
-                    <select class="form-control" name="customer_id">
-                        <option selected value="0">-- select Customer--</option>
-                        @foreach($customer_info as $v_cus)
-                            <option value="{{$v_cus->id}}">{{$v_cus->customer_name}}</option>
+                    <label class="form-label">{{ __('select Supplier') }}</label>
+                    <select class="form-control" name="supplier_id">
+                        <option selected value="0">-- select Supplier--</option>
+                        @foreach($supplier_info as $v_supp)
+                            <option value="{{$v_supp->id}}">{{$v_supp->supplier_name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -977,8 +937,9 @@
 
     <!-- Print Header (only visible when printing) -->
     <div class="print-header">
-        <h1>Customer Payment Report</h1>
+        <h1>Supplier Payment Report</h1>
         <p>Generated on: <span id="printDate"></span></p>
+        <p>Company Name - Payment Management System</p>
     </div>
 
     <div class="col-lg-12 report-table-container">
@@ -987,7 +948,7 @@
             <thead>
             <tr>
                 <th>SL</th>
-                <th>Customer<br>Name</th>
+                <th>Supplier<br>Name</th>
                 <th>Invoice<br>No</th>
                 <th>Account<br>No</th>
                 <th>BDT<br>Rate</th>
@@ -1005,34 +966,26 @@
             @foreach($searchInfo as $v_src_value)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{$v_src_value->customer_name}}</td>
+                <td>{{$v_src_value->supplier_name}}</td>
                 <td>{{$v_src_value->invoice_no}}</td>
-                <td>{{$v_src_value->customer_ac_no}}</td>
+                <td>{{$v_src_value->supplier_ac_no}}</td>
                 <td>{{$v_src_value->bdt_rate}}</td>
                 <td>{{$v_src_value->bdt_amount}}</td>
                 <td>{{$v_src_value->other_rate}}</td>
                 <td>{{$v_src_value->other_amount}}</td>
-                <td>{{$v_src_value->customer_paid_amount}}</td>
-                <td>{{$v_src_value->customer_due_amount}}</td>
-                <td>{{$v_src_value->customer_method_name}}</td>
+                <td>{{$v_src_value->supplier_paid_amount}}</td>
+                <td>{{$v_src_value->supplier_due_amount}}</td>
+                <td>{{$v_src_value->supplier_method_name}}</td>
                 <td class="no-print">
-                    <button onclick="previewInvoice('{{$v_src_value->invoice_no}}', '{{$v_src_value->customer_name}}', '{{$v_src_value->customer_ac_no}}', '{{$v_src_value->bdt_rate}}', '{{$v_src_value->bdt_amount}}', '{{$v_src_value->other_rate}}', '{{$v_src_value->other_amount}}', '{{$v_src_value->customer_paid_amount}}', '{{$v_src_value->customer_due_amount}}', '{{$v_src_value->customer_method_name}}')" class="btn btn-sm btn-invoice-preview" title="Preview Invoice">
+                    <button onclick="previewInvoice('{{$v_src_value->invoice_no}}', '{{$v_src_value->supplier_name}}', '{{$v_src_value->supplier_ac_no}}', '{{$v_src_value->bdt_rate}}', '{{$v_src_value->bdt_amount}}', '{{$v_src_value->other_rate}}', '{{$v_src_value->other_amount}}', '{{$v_src_value->supplier_paid_amount}}', '{{$v_src_value->supplier_due_amount}}', '{{$v_src_value->supplier_method_name}}')" class="btn btn-sm btn-invoice-preview" title="Preview Invoice">
                         <i class="bx bx-show"></i>
                     </button>
-                    <button onclick="printInvoice('{{$v_src_value->invoice_no}}', '{{$v_src_value->customer_name}}', '{{$v_src_value->customer_ac_no}}', '{{$v_src_value->bdt_rate}}', '{{$v_src_value->bdt_amount}}', '{{$v_src_value->other_rate}}', '{{$v_src_value->other_amount}}', '{{$v_src_value->customer_paid_amount}}', '{{$v_src_value->customer_due_amount}}', '{{$v_src_value->customer_method_name}}')" class="btn btn-sm btn-invoice-print" title="Print Invoice">
+                    <button onclick="printInvoice('{{$v_src_value->invoice_no}}', '{{$v_src_value->supplier_name}}', '{{$v_src_value->supplier_ac_no}}', '{{$v_src_value->bdt_rate}}', '{{$v_src_value->bdt_amount}}', '{{$v_src_value->other_rate}}', '{{$v_src_value->other_amount}}', '{{$v_src_value->supplier_paid_amount}}', '{{$v_src_value->supplier_due_amount}}', '{{$v_src_value->supplier_method_name}}')" class="btn btn-sm btn-invoice-print" title="Print Invoice">
                         <i class="bx bx-printer"></i>
                     </button>
                 </td>
             </tr>
             @endforeach
-            @else
-            <tr>
-                <td colspan="12" class="no-data-message">
-                    <i class="bx bx-info-circle"></i>
-                    <strong>No records found</strong>
-                    <small>Please select filters and click search to view customer payment data.</small>
-                </td>
-            </tr>
             @endif
             </tbody>
             <tfoot>
@@ -1043,8 +996,8 @@
                 <td><strong>{{ number_format($searchInfo->sum('bdt_amount'), 2) }}</strong></td>
                 <td><strong>{{ number_format($searchInfo->sum('other_rate'), 2) }}</strong></td>
                 <td><strong>{{ number_format($searchInfo->sum('other_amount'), 2) }}</strong></td>
-                <td><strong>{{ number_format($searchInfo->sum('customer_paid_amount'), 2) }}</strong></td>
-                <td><strong>{{ number_format($searchInfo->sum('customer_due_amount'), 2) }}</strong></td>
+                <td><strong>{{ number_format($searchInfo->sum('supplier_paid_amount'), 2) }}</strong></td>
+                <td><strong>{{ number_format($searchInfo->sum('supplier_due_amount'), 2) }}</strong></td>
                 <td></td>
                 <td class="no-print"></td>
             </tr>
@@ -1067,7 +1020,7 @@
                     <p style="margin: 3px 0; color: #6b7280; font-size: 0.95rem;">Phone: (123) 456-7890</p>
                     <p style="margin: 3px 0; color: #6b7280; font-size: 0.95rem;">Email: info@company.com</p>
                 </div>
-                
+
                 <!-- Invoice Title and Details -->
                 <div style="text-align: right;">
                     <h1 style="color: #14b8a6; margin: 0 0 20px 0; font-size: 2.5rem; font-weight: 700;">INVOICE</h1>
@@ -1090,7 +1043,7 @@
                 <h3 style="color: #1f2937; margin: 0 0 10px 0; font-size: 1.1rem; font-weight: 600;">Bill To:</h3>
                 <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #14b8a6;">
                     <p style="margin: 5px 0; color: #1f2937; font-size: 1rem; font-weight: 600;">
-                        <span id="inv_customer_name"></span>
+                        <span id="inv_supplier_name"></span>
                     </p>
                     <p style="margin: 5px 0; color: #6b7280; font-size: 0.9rem;">
                         Account No: <span id="inv_account_no"></span>
@@ -1184,21 +1137,21 @@
         try {
             // Get the table
             const table = document.querySelector('.report-table');
-            
+
             if (!table) {
                 alert('Table not found!');
                 return;
             }
-            
+
             // Clone the table to manipulate it
             const clonedTable = table.cloneNode(true);
-        
+
         // Remove the Action column (last column) from header
         const headerRow = clonedTable.querySelector('thead tr');
         if (headerRow.lastElementChild.classList.contains('no-print')) {
             headerRow.removeChild(headerRow.lastElementChild);
         }
-        
+
         // Remove the Action column from all body rows
         const bodyRows = clonedTable.querySelectorAll('tbody tr');
         bodyRows.forEach(row => {
@@ -1206,51 +1159,51 @@
                 row.removeChild(row.lastElementChild);
             }
         });
-        
+
         // Get table HTML
         let tableHTML = clonedTable.outerHTML;
-        
+
         // Create a temporary div to hold the report title
-        const reportTitle = '<h2>Customer Payment Report</h2><p>Generated on: ' + new Date().toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
+        const reportTitle = '<h2>Supplier Payment Report</h2><p>Generated on: ' + new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
         }) + '</p><br>';
-        
+
         const fullHTML = reportTitle + tableHTML;
-        
+
         // Create a Blob with the HTML content
         const blob = new Blob(['\ufeff', fullHTML], {
             type: 'application/vnd.ms-excel'
         });
-        
+
         // Create download link
         const downloadLink = document.createElement('a');
         downloadLink.href = URL.createObjectURL(blob);
-        
+
         // Generate filename with current date
         const date = new Date();
-        const filename = 'Customer_Payment_Report_' + 
-            date.getFullYear() + 
-            ('0' + (date.getMonth() + 1)).slice(-2) + 
-            ('0' + date.getDate()).slice(-2) + 
-            '_' + 
-            ('0' + date.getHours()).slice(-2) + 
-            ('0' + date.getMinutes()).slice(-2) + 
+        const filename = 'Supplier_Payment_Report_' +
+            date.getFullYear() +
+            ('0' + (date.getMonth() + 1)).slice(-2) +
+            ('0' + date.getDate()).slice(-2) +
+            '_' +
+            ('0' + date.getHours()).slice(-2) +
+            ('0' + date.getMinutes()).slice(-2) +
             '.xls';
-        
+
         downloadLink.download = filename;
-        
+
         // Trigger download
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
-        
+
         // Show success notification
         showNotification('Excel file downloaded successfully!', 'success');
-        
+
         } catch (error) {
             console.error('Export to Excel failed:', error);
             alert('Failed to export to Excel. Please try again.');
@@ -1281,9 +1234,9 @@
                 <i class="bx bx-check-circle" style="font-size: 1.5rem;"></i>
                 <span>${message}</span>
             `;
-            
+
             document.body.appendChild(notification);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease-out';
@@ -1327,50 +1280,50 @@
     })();
 
     // Function to preview invoice before printing
-    function previewInvoice(invoiceNo, customerName, accountNo, bdtRate, bdtAmount, ringgitRate, ringgitAmount, paidAmount, dueAmount, paymentMethod) {
+    function previewInvoice(invoiceNo, supplierName, accountNo, bdtRate, bdtAmount, ringgitRate, ringgitAmount, paidAmount, dueAmount, paymentMethod) {
         // Calculate subtotal
         const subtotal = parseFloat(bdtAmount) + parseFloat(ringgitAmount);
-        
+
         // Populate invoice template with formatted numbers
         document.getElementById('inv_invoice_no').textContent = invoiceNo;
         document.getElementById('inv_invoice_no_ref').textContent = invoiceNo;
-        document.getElementById('inv_customer_name').textContent = customerName;
+        document.getElementById('inv_supplier_name').textContent = supplierName;
         document.getElementById('inv_account_no').textContent = accountNo;
-        
+
         // Populate rate and amount fields
         document.getElementById('inv_bdt_rate').textContent = formatNumber(bdtRate);
         document.getElementById('inv_bdt_rate_copy').textContent = formatNumber(bdtRate);
         document.getElementById('inv_bdt_amount').textContent = formatNumber(bdtAmount);
-        
+
         document.getElementById('inv_ringgit_rate').textContent = formatNumber(ringgitRate);
         document.getElementById('inv_ringgit_rate_copy').textContent = formatNumber(ringgitRate);
         document.getElementById('inv_ringgit_amount').textContent = formatNumber(ringgitAmount);
-        
+
         // Populate totals
         document.getElementById('inv_subtotal').textContent = formatNumber(subtotal);
         document.getElementById('inv_paid_amount').textContent = formatNumber(paidAmount);
         document.getElementById('inv_due_amount').textContent = formatNumber(dueAmount);
-        
+
         document.getElementById('inv_payment_method').textContent = paymentMethod || 'N/A';
-        
+
         // Set current date
         const now = new Date();
-        const dateOptions = { 
-            year: 'numeric', 
-            month: 'long', 
+        const dateOptions = {
+            year: 'numeric',
+            month: 'long',
             day: 'numeric'
         };
         document.getElementById('inv_date').textContent = now.toLocaleDateString('en-US', dateOptions);
-        
+
         // Show invoice preview by adding body class
         document.body.classList.add('printing-invoice');
-        
+
         // Scroll to top to see the invoice
         window.scrollTo(0, 0);
-        
+
         // Add a close button or message
         const invoiceContainer = document.getElementById('invoiceTemplate');
-        
+
         // Create close button if it doesn't exist
         if (!document.getElementById('closePreview')) {
             const closeBtn = document.createElement('button');
@@ -1387,58 +1340,58 @@
     }
 
     // Function to print individual invoice
-    function printInvoice(invoiceNo, customerName, accountNo, bdtRate, bdtAmount, ringgitRate, ringgitAmount, paidAmount, dueAmount, paymentMethod) {
+    function printInvoice(invoiceNo, supplierName, accountNo, bdtRate, bdtAmount, ringgitRate, ringgitAmount, paidAmount, dueAmount, paymentMethod) {
         // Calculate subtotal
         const subtotal = parseFloat(bdtAmount) + parseFloat(ringgitAmount);
-        
+
         // Populate invoice template with formatted numbers
         document.getElementById('inv_invoice_no').textContent = invoiceNo;
         document.getElementById('inv_invoice_no_ref').textContent = invoiceNo;
-        document.getElementById('inv_customer_name').textContent = customerName;
+        document.getElementById('inv_supplier_name').textContent = supplierName;
         document.getElementById('inv_account_no').textContent = accountNo;
-        
+
         // Populate rate and amount fields
         document.getElementById('inv_bdt_rate').textContent = formatNumber(bdtRate);
         document.getElementById('inv_bdt_rate_copy').textContent = formatNumber(bdtRate);
         document.getElementById('inv_bdt_amount').textContent = formatNumber(bdtAmount);
-        
+
         document.getElementById('inv_ringgit_rate').textContent = formatNumber(ringgitRate);
         document.getElementById('inv_ringgit_rate_copy').textContent = formatNumber(ringgitRate);
         document.getElementById('inv_ringgit_amount').textContent = formatNumber(ringgitAmount);
-        
+
         // Populate totals
         document.getElementById('inv_subtotal').textContent = formatNumber(subtotal);
         document.getElementById('inv_paid_amount').textContent = formatNumber(paidAmount);
         document.getElementById('inv_due_amount').textContent = formatNumber(dueAmount);
-        
+
         document.getElementById('inv_payment_method').textContent = paymentMethod || 'N/A';
-        
+
         // Set current date
         const now = new Date();
-        const dateOptions = { 
-            year: 'numeric', 
-            month: 'long', 
+        const dateOptions = {
+            year: 'numeric',
+            month: 'long',
             day: 'numeric'
         };
         document.getElementById('inv_date').textContent = now.toLocaleDateString('en-US', dateOptions);
-        
+
         // Store original title
         const originalTitle = document.title;
-        
+
         // Set document title for print
         document.title = 'Invoice - ' + invoiceNo;
-        
+
         // Add body class to show invoice and hide other content
         document.body.classList.add('printing-invoice');
-        
+
         // Small delay to ensure the template is populated
         setTimeout(function() {
             // Trigger print dialog
             window.print();
-            
+
             // Remove body class after printing
             document.body.classList.remove('printing-invoice');
-            
+
             // Restore original title
             document.title = originalTitle;
         }, 100);
@@ -1453,23 +1406,23 @@
         try {
             // Make sure we're not in invoice printing mode
             document.body.classList.remove('printing-invoice');
-            
+
             // Remove any preview close buttons
             const closeBtn = document.getElementById('closePreview');
             if (closeBtn) {
                 closeBtn.remove();
             }
-            
+
             // Set print date
             const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
+            const options = {
+                year: 'numeric',
+                month: 'long',
                 day: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit'
             };
-            
+
             const printDateElement = document.getElementById('printDate');
             if (printDateElement) {
                 printDateElement.textContent = now.toLocaleDateString('en-US', options);
@@ -1479,14 +1432,14 @@
             const originalTitle = document.title;
 
             // Set document title for print
-            document.title = 'Customer Payment Report - ' + now.toLocaleDateString();
+            document.title = 'Supplier Payment Report - ' + now.toLocaleDateString();
 
             // Add a small delay to ensure the date is rendered
             setTimeout(function() {
                 try {
                     // Trigger print dialog
                     window.print();
-                    
+
                     // Restore original title
                     document.title = originalTitle;
                 } catch (printError) {
@@ -1515,9 +1468,9 @@
     // Set print date on page load (for quick access)
     document.addEventListener('DOMContentLoaded', function() {
         const now = new Date();
-        const options = { 
-            year: 'numeric', 
-            month: 'long', 
+        const options = {
+            year: 'numeric',
+            month: 'long',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
