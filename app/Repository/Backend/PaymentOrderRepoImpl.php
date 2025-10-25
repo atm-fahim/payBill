@@ -45,12 +45,12 @@ class PaymentOrderRepoImpl extends EloquentBaseRepository implements PaymentOrde
             'supplier.supplier_name',
             'customer.customer_name',
             'payment_order.*',
-            'payment_method.method_name as customer_method_name',
+            'customer_payment.method_name as customer_method_name',
             'supplier_payment.method_name as supplier_method_name'
         )
             ->leftJoin('customer', 'payment_order.customer_id', '=', 'customer.id')
             ->leftJoin('supplier', 'payment_order.supplier_id', '=', 'supplier.id')
-            ->leftJoin('payment_method', 'payment_order.customer_payment_method_id', '=', 'payment_method.id')
+            ->leftJoin('payment_method as customer_payment', 'payment_order.customer_payment_method_id', '=', 'customer_payment.id')
             ->leftJoin('payment_method as supplier_payment', 'payment_order.supplier_payment_method_id', '=', 'supplier_payment.id')
             ->where('payment_order.status', '<>', 9)  // Filter the status
             ->get(); // Fetch the data

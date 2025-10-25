@@ -60,6 +60,7 @@ class PaymentOrderController extends BaseController
         $rateInfo               = $this->rateRepo->withoutDeletingData();
         $paymentMethodInfo      = $this->pmtMtdRepo->withoutDeletingData();
         $orderPaymentInfo    = $this->ordPmtRepo->paymentOrderInfo();
+
         return view('backend.order.order_payment')
             ->with('customer_info', $customerInfo)
             ->with('supplier_info', $supplierInfo)
@@ -96,12 +97,12 @@ class PaymentOrderController extends BaseController
             $data['supplier_ac_no']             = $request->input('supplier_account_no');
             $data['supplier_payment_method_id'] = $request->input('supplier_payment_method');
 
-            $data['invoice_no']                 = $this->random_token();
+            $data['invoice_no']                 = $request->input('invoice_no')?$request->input('invoice_no'):$this->random_token();
             $data['branch_id']                  = auth()->user()->branch_id;
             (!empty($id)) ? $this->ordPmtRepo->update($id, $data) : $this->ordPmtRepo->save($data);
             return response()->json([
                 'status'    => 'success',
-                'message'   => 'Payment has been successfully saved.',
+                'message'   => (isset($id))?'Payment has been successfully updated.':'Payment has been successfully saved.',
                 'redirect_url' => route('payment-order') // Example URL you want to redirect to
             ]);
         } catch (\Exception $e) {
